@@ -31,7 +31,7 @@ function App(){
     gsap.set('.signal-stroke',{strokeDashoffset:1})
     gsap.set('.intro-title-line span',{yPercent:115})
     const opening=gsap.timeline({scrollTrigger:{trigger:intro.current,pin:intro.current.querySelector('.intro-sticky'),start:'top top',end:()=>'+='+window.innerHeight*(mobile?1.2:1.5),scrub:1,anticipatePin:1}})
-    opening.to('.signal-stroke',{strokeDashoffset:0,duration:.68,ease:'none'},0).to('.coord-mark',{autoAlpha:1,stagger:.04,duration:.12},.16).to('.intro-title-line span',{yPercent:0,stagger:.12,duration:.24,ease:'power3.out'},.34).to('.intro-subline',{y:0,autoAlpha:1,duration:.18},.62).to('.intro-tail',{autoAlpha:0,duration:.12},.82)
+    opening.to('.signal-stroke',{strokeDashoffset:0,duration:.68,ease:'none'},0).to('.coordinate-marker',{autoAlpha:1,duration:.16},.2).to('.coord-mark',{autoAlpha:1,stagger:.04,duration:.12},.16).to('.intro-title-line span',{yPercent:0,stagger:.12,duration:.24,ease:'power3.out'},.34).to('.intro-subline',{y:0,autoAlpha:1,duration:.18},.62).to('.intro-tail',{autoAlpha:0,duration:.12},.82)
 
     gsap.set('.pod-beat',{autoAlpha:0,yPercent:20});gsap.set('.pod-contour',{strokeDashoffset:1});gsap.set('.pod-measure',{autoAlpha:0})
     const podTl=gsap.timeline({scrollTrigger:{trigger:podSection.current,pin:podSection.current.querySelector('.pod-sticky'),start:'top top',end:()=>'+='+window.innerHeight*(mobile?3.1:5.3),scrub,anticipatePin:1}})
@@ -43,8 +43,8 @@ function App(){
       .to(podProgress.current,{v:1,duration:.7,ease:'none'},4.85)
 
     const bp=gsap.timeline({scrollTrigger:{trigger:blueprint.current,pin:blueprint.current.querySelector('.blueprint-sticky'),start:'top top',end:()=>'+='+window.innerHeight*(mobile?1.8:2.35),scrub,anticipatePin:1}})
-    gsap.set('.blueprint-trace,.callout-connector .animated-path',{strokeDashoffset:1})
-    bp.to(blueProgress.current,{v:1,duration:1,ease:'none'},0).to('.blueprint-trace,.callout-connector .animated-path',{strokeDashoffset:0,stagger:.08,duration:.55,ease:'none'},0).fromTo('.dimension-label',{autoAlpha:0,x:-15},{autoAlpha:1,x:0,stagger:.1,duration:.2},.16).fromTo('.dimension-line',{scaleX:0,transformOrigin:'left center'},{scaleX:1,stagger:.06,duration:.2},.24).to('.blueprint-statement',{yPercent:0,autoAlpha:1,duration:.22},.48)
+    gsap.set('.blueprint-trace,.callout-connector .animated-path,.measurement-line path',{strokeDashoffset:1});gsap.set('.callout-connector circle',{autoAlpha:0})
+    bp.to(blueProgress.current,{v:1,duration:1,ease:'none'},0).to('.blueprint-trace,.callout-connector .animated-path',{strokeDashoffset:0,stagger:.08,duration:.55,ease:'none'},0).to('.measurement-line path',{strokeDashoffset:0,stagger:.08,duration:.34,ease:'none'},.24).to('.callout-connector circle',{autoAlpha:1,stagger:.08,duration:.16},.52).fromTo('.dimension-label',{autoAlpha:0,x:-15},{autoAlpha:1,x:0,stagger:.1,duration:.2},.16).fromTo('.dimension-line',{scaleX:0,transformOrigin:'left center'},{scaleX:1,stagger:.06,duration:.2},.24).to('.blueprint-statement',{yPercent:0,autoAlpha:1,duration:.22},.48)
 
     const ft=gsap.timeline({scrollTrigger:{trigger:field.current,pin:field.current.querySelector('.field-sticky'),start:'top top',end:()=>'+='+window.innerHeight*(mobile?2:2.65),scrub,anticipatePin:1}})
     gsap.set('.field-vector',{strokeDashoffset:1});gsap.set('.field-pulse',{x:-120})
@@ -57,6 +57,7 @@ function App(){
 
     gsap.set('.discipline-rule',{scaleX:0,transformOrigin:'left center'})
     gsap.timeline({scrollTrigger:{trigger:disciplinesRef.current,start:'top 70%',end:'bottom 65%',scrub:.8}}).to('.discipline-rule',{scaleX:1,stagger:.12,duration:.55,ease:'none'})
+    ScrollTrigger.refresh()
    },root)
   },root)
   return()=>{context.revert();mm.revert()}
@@ -76,6 +77,7 @@ function App(){
  </main>
 }
 export default App
+
 
 
 
