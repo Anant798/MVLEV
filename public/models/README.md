@@ -1,0 +1,1 @@
+﻿Place the approved MV-Lev model at `public/models/mv-lev-pod.glb`, then set `VITE_POD_MODEL_URL=/models/mv-lev-pod.glb` in a local `.env` file. Without that setting, the experience uses its procedural concept placeholder. The placeholder is illustrative and is not a finalized vehicle design.
